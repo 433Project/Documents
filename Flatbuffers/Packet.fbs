@@ -17,6 +17,7 @@ enum Command : int
          //MS~Config
          MSLIST_REQUEST = 30,
 	 MSLIST_RESPONSE,
+	 MS_ID,
 	 
 	 //Room~MS
          ROOM_CREATE_REQUEST = 40,
