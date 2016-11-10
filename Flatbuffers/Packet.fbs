@@ -1,6 +1,6 @@
 namespace fb;
 
-enum Command
+enum Command : int
 {
 	 //Common
 	 HEALTH_CHECK = 0,
@@ -26,13 +26,13 @@ enum Command
          ROOM_JOIN_REQUEST = 50,
 	 ROOM_JOIN_RESPONSE,
 	 GAME_START,
-	 GAME_END
+	 GAME_END,
 
 	 //PG~Monitor
 	 PG_START = 60,
 	 PG_END,
 	 PG_DUMMY
-};
+}
 
 
 enum Status : int
