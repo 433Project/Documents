@@ -6,23 +6,32 @@ enum Command
 	 HEALTH_CHECK = 0,
 	 
 	 //MS~MS
-	 MATCH_REQUEST = 10,
-	 MATCH_RESPONSE,
+	 NOTI_MATCH_REQUEST = 10,
+	 NOTI_MATCH_SUCCESS,
 	 LATENCY,
-	 
+
+	 //MS~Client = 20,
+	 MATCH_REQUEST,
+	 MATCH_RESPONSE,
+	 	 
          //MS~Config
-         MSLIST_REQUEST = 20,
+         MSLIST_REQUEST = 30,
 	 MSLIST_RESPONSE,
 	 
 	 //Room~MS
-         ROOM_CREATE_REQUEST = 30,
+         ROOM_CREATE_REQUEST = 40,
 	 ROOM_CREATE_RESPONSE,
 	 
 	 //Room~Client
-         ROOM_JOIN_REQUEST = 40,
+         ROOM_JOIN_REQUEST = 50,
 	 ROOM_JOIN_RESPONSE,
 	 GAME_START,
 	 GAME_END
+
+	 //PG~Monitor
+	 PG_START = 60,
+	 PG_END,
+	 PG_DUMMY
 };
 
 
