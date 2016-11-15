@@ -47,7 +47,8 @@ table Body
 {
 	cmd: Command;
 	status: Status;
-	data: string;
+	data1: string;
+	data2: string;
 }
 
 root_type Body;

@@ -18,6 +18,7 @@ fb.Command = {
   MATCH_RESPONSE: 14,
   MSLIST_REQUEST: 30,
   MSLIST_RESPONSE: 31,
+  MS_ID: 32,
   ROOM_CREATE_REQUEST: 40,
   ROOM_CREATE_RESPONSE: 41,
   ROOM_JOIN_REQUEST: 50,
@@ -93,8 +94,17 @@ fb.Body.prototype.status = function() {
  * @param {flatbuffers.Encoding=} optionalEncoding
  * @returns {string|Uint8Array}
  */
-fb.Body.prototype.data = function(optionalEncoding) {
+fb.Body.prototype.data1 = function(optionalEncoding) {
   var offset = this.bb.__offset(this.bb_pos, 8);
+  return offset ? this.bb.__string(this.bb_pos + offset, optionalEncoding) : null;
+};
+
+/**
+ * @param {flatbuffers.Encoding=} optionalEncoding
+ * @returns {string|Uint8Array}
+ */
+fb.Body.prototype.data2 = function(optionalEncoding) {
+  var offset = this.bb.__offset(this.bb_pos, 10);
   return offset ? this.bb.__string(this.bb_pos + offset, optionalEncoding) : null;
 };
 
@@ -102,7 +112,7 @@ fb.Body.prototype.data = function(optionalEncoding) {
  * @param {flatbuffers.Builder} builder
  */
 fb.Body.startBody = function(builder) {
-  builder.startObject(3);
+  builder.startObject(4);
 };
 
 /**
@@ -123,10 +133,18 @@ fb.Body.addStatus = function(builder, status) {
 
 /**
  * @param {flatbuffers.Builder} builder
- * @param {flatbuffers.Offset} dataOffset
+ * @param {flatbuffers.Offset} data1Offset
  */
-fb.Body.addData = function(builder, dataOffset) {
-  builder.addFieldOffset(2, dataOffset, 0);
+fb.Body.addData1 = function(builder, data1Offset) {
+  builder.addFieldOffset(2, data1Offset, 0);
+};
+
+/**
+ * @param {flatbuffers.Builder} builder
+ * @param {flatbuffers.Offset} data2Offset
+ */
+fb.Body.addData2 = function(builder, data2Offset) {
+  builder.addFieldOffset(3, data2Offset, 0);
 };
 
 /**
