@@ -1,6 +1,6 @@
 namespace fb;
 
-enum Command : int
+enum COMMAND : int
 {
 	 //Common
 	 HEALTH_CHECK = 0,
@@ -36,7 +36,7 @@ enum Command : int
 }
 
 
-enum Status : int
+enum STATUS : int
 {
 	  SUCCESS,
 	  FAIL,
@@ -45,8 +45,8 @@ enum Status : int
 
 table Body
 {
-	cmd: Command;
-	status: Status;
+	cmd: COMMAND;
+	status: STATUS;
 	data1: string;
 	data2: string;
 }

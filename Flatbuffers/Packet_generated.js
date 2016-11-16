@@ -9,7 +9,7 @@ var fb = fb || {};
 /**
  * @enum
  */
-fb.Command = {
+fb.COMMAND = {
   HEALTH_CHECK: 0,
   NOTI_MATCH_REQUEST: 10,
   NOTI_MATCH_SUCCESS: 11,
@@ -33,7 +33,7 @@ fb.Command = {
 /**
  * @enum
  */
-fb.Status = {
+fb.STATUS = {
   SUCCESS: 0,
   FAIL: 1,
   NONE: 2
@@ -75,19 +75,19 @@ fb.Body.getRootAsBody = function(bb, obj) {
 };
 
 /**
- * @returns {fb.Command}
+ * @returns {fb.COMMAND}
  */
 fb.Body.prototype.cmd = function() {
   var offset = this.bb.__offset(this.bb_pos, 4);
-  return offset ? /** @type {fb.Command} */ (this.bb.readInt32(this.bb_pos + offset)) : fb.Command.HEALTH_CHECK;
+  return offset ? /** @type {fb.COMMAND} */ (this.bb.readInt32(this.bb_pos + offset)) : fb.COMMAND.HEALTH_CHECK;
 };
 
 /**
- * @returns {fb.Status}
+ * @returns {fb.STATUS}
  */
 fb.Body.prototype.status = function() {
   var offset = this.bb.__offset(this.bb_pos, 6);
-  return offset ? /** @type {fb.Status} */ (this.bb.readInt32(this.bb_pos + offset)) : fb.Status.SUCCESS;
+  return offset ? /** @type {fb.STATUS} */ (this.bb.readInt32(this.bb_pos + offset)) : fb.STATUS.SUCCESS;
 };
 
 /**
@@ -117,18 +117,18 @@ fb.Body.startBody = function(builder) {
 
 /**
  * @param {flatbuffers.Builder} builder
- * @param {fb.Command} cmd
+ * @param {fb.COMMAND} cmd
  */
 fb.Body.addCmd = function(builder, cmd) {
-  builder.addFieldInt32(0, cmd, fb.Command.HEALTH_CHECK);
+  builder.addFieldInt32(0, cmd, fb.COMMAND.HEALTH_CHECK);
 };
 
 /**
  * @param {flatbuffers.Builder} builder
- * @param {fb.Status} status
+ * @param {fb.STATUS} status
  */
 fb.Body.addStatus = function(builder, status) {
-  builder.addFieldInt32(1, status, fb.Status.SUCCESS);
+  builder.addFieldInt32(1, status, fb.STATUS.SUCCESS);
 };
 
 /**
