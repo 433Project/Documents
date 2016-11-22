@@ -10,12 +10,12 @@ var fb = fb || {};
  * @enum
  */
 fb.COMMAND = {
-  HEALTH_CHECK: 0,
+  HEALTH_CHECK_REQUEST: 0,
+  HEALTH_CHECK_RESPONSE: 1,
   NOTI_MATCH_REQUEST: 10,
   NOTI_MATCH_SUCCESS: 11,
-  LATENCY: 12,
-  MATCH_REQUEST: 13,
-  MATCH_RESPONSE: 14,
+  MATCH_REQUEST: 12,
+  MATCH_RESPONSE: 13,
   MSLIST_REQUEST: 30,
   MSLIST_RESPONSE: 31,
   MS_ID: 32,
@@ -79,7 +79,7 @@ fb.Body.getRootAsBody = function(bb, obj) {
  */
 fb.Body.prototype.cmd = function() {
   var offset = this.bb.__offset(this.bb_pos, 4);
-  return offset ? /** @type {fb.COMMAND} */ (this.bb.readInt32(this.bb_pos + offset)) : fb.COMMAND.HEALTH_CHECK;
+  return offset ? /** @type {fb.COMMAND} */ (this.bb.readInt32(this.bb_pos + offset)) : fb.COMMAND.HEALTH_CHECK_REQUEST;
 };
 
 /**
@@ -120,7 +120,7 @@ fb.Body.startBody = function(builder) {
  * @param {fb.COMMAND} cmd
  */
 fb.Body.addCmd = function(builder, cmd) {
-  builder.addFieldInt32(0, cmd, fb.COMMAND.HEALTH_CHECK);
+  builder.addFieldInt32(0, cmd, fb.COMMAND.HEALTH_CHECK_REQUEST);
 };
 
 /**

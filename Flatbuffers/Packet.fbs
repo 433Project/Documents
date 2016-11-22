@@ -3,12 +3,12 @@ namespace fb;
 enum COMMAND : int
 {
 	 //Common
-	 HEALTH_CHECK = 0,
-	 
+	 HEALTH_CHECK_REQUEST = 0,
+	 HEALTH_CHECK_RESPONSE,
+
 	 //MS~MS
 	 NOTI_MATCH_REQUEST = 10,
 	 NOTI_MATCH_SUCCESS,
-	 LATENCY,
 
 	 //MS~Client = 20,
 	 MATCH_REQUEST,
