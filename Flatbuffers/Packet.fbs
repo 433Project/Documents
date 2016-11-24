@@ -15,9 +15,11 @@ enum COMMAND : int
 	 MATCH_RESPONSE,
 	 	 
          //MS~Config
-         MSLIST_REQUEST = 30,
+	 MS_ID_REQUEST = 30,
+	 MS_ID_RESPONSE,
+         MSLIST_REQUEST,
 	 MSLIST_RESPONSE,
-	 MS_ID,
+	 
 	 
 	 //Room~MS
          ROOM_CREATE_REQUEST = 40,
